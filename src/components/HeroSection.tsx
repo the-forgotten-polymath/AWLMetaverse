@@ -58,14 +58,14 @@ export function HeroSection() {
         <div className="max-w-3xl flex flex-col items-start animate-rise">
 
           {/* Master Headline */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-[62px] font-normal leading-[1.08] tracking-[-0.03em] text-white mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-normal leading-[1.15] tracking-[-0.03em] text-white mb-5">
             <span className="block font-medium">You bring the ambition.</span>
             <span className="block text-neutral-400">We build the engine behind it.</span>
           </h1>
 
           {/* Subcopy */}
-          <p className="text-base sm:text-lg md:text-xl leading-relaxed text-neutral-300 font-normal mb-9 max-w-2xl">
-            A unified infrastructure platform helping modern teams build, ship, and scale autonomous AI systems, custom ERPs, and high-velocity digital engines with confidence.
+          <p className="text-sm sm:text-base md:text-lg leading-relaxed text-neutral-300 font-normal mb-8 max-w-xl">
+            A unified infrastructure platform to help teams build, ship, and scale AI systems with confidence.
           </p>
 
           {/* Action CTAs */}

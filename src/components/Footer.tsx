@@ -26,7 +26,7 @@ export function Footer() {
               </div>
 
               <p className="text-neutral-400 text-xs sm:text-sm max-w-sm leading-relaxed mb-6 font-normal">
-                A unified infrastructure platform helping modern teams build, ship, and scale autonomous AI systems, custom ERPs, and high-velocity digital engines.
+                A unified infrastructure platform to help teams build, ship, and scale AI systems with confidence.
               </p>
             </div>
           </div>
