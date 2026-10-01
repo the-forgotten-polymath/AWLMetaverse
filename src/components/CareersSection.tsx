@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { CAREERS_DATA, CareerItem } from "@/data/companyData";
 import { Briefcase, MapPin, Clock, ArrowRight, CheckCircle2, X, Send, Sparkles } from "lucide-react";
+import { ScrollReveal } from "./ScrollReveal";
 
 export function CareersSection() {
   const [selectedJob, setSelectedJob] = useState<CareerItem | null>(null);
@@ -28,117 +29,128 @@ export function CareersSection() {
   return (
     <section id="careers" className="py-28 sm:py-36 relative bg-[#050507] border-t border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 pb-8 border-b border-white/[0.08]">
-          <div>
-            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-400 mb-3 font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
-              <span>TALENT & OPPORTUNITIES</span>
+        {/* Section Header with Scroll Reveal */}
+        <ScrollReveal yOffset={32}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 pb-8 border-b border-white/[0.08]">
+            <div>
+              <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-400 mb-3 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
+                <span>TALENT & OPPORTUNITIES</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white">
+                CAREERS AT AWL
+              </h2>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white">
-              CAREERS AT AWL
-            </h2>
+            <p className="text-sm sm:text-base text-neutral-400 max-w-lg font-normal leading-relaxed">
+              We value high engineering standards, creative autonomy, and rapid execution. Work directly on production AI agents, complex ERPs, and national brand growth engines.
+            </p>
           </div>
-          <p className="text-sm sm:text-base text-neutral-400 max-w-lg font-normal leading-relaxed">
-            We value high engineering standards, creative autonomy, and rapid execution. Work directly on production AI agents, complex ERPs, and national brand growth engines.
-          </p>
-        </div>
+        </ScrollReveal>
 
         {/* Culture Badges */}
         <div id="culture" className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="glass-panel p-7 rounded-3xl border border-white/[0.08] hover:border-white/20 transition-all">
-            <h4 className="text-white font-medium text-lg mb-2">Production Impact from Day 1</h4>
-            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
-              No simulated sandboxes. Every engineer writes code or deploys infrastructure that serves real customers immediately.
-            </p>
-          </div>
-          <div className="glass-panel p-7 rounded-3xl border border-white/[0.08] hover:border-white/20 transition-all">
-            <h4 className="text-white font-medium text-lg mb-2">Meritocracy & High Velocity</h4>
-            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
-              We reward architecture speed and problem-solving over arbitrary seniority. High performers assume project leadership rapidly.
-            </p>
-          </div>
-          <div className="glass-panel p-7 rounded-3xl border border-white/[0.08] hover:border-white/20 transition-all">
-            <h4 className="text-white font-medium text-lg mb-2">Modern Production Stack</h4>
-            <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
-              Next.js 14/15, TypeScript, Python LLM frameworks, Tailwind CSS, PostgreSQL, and cloud-native serverless architecture.
-            </p>
-          </div>
+          <ScrollReveal delay={0.05} className="h-full">
+            <div className="h-full glass-panel p-7 rounded-3xl border border-white/[0.08] hover:border-white/20 transition-all">
+              <h4 className="text-white font-medium text-lg mb-2">Production Impact from Day 1</h4>
+              <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
+                No simulated sandboxes. Every engineer writes code or deploys infrastructure that serves real customers immediately.
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1} className="h-full">
+            <div className="h-full glass-panel p-7 rounded-3xl border border-white/[0.08] hover:border-white/20 transition-all">
+              <h4 className="text-white font-medium text-lg mb-2">Meritocracy & High Velocity</h4>
+              <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
+                We reward architecture speed and problem-solving over arbitrary seniority. High performers assume project leadership rapidly.
+              </p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={0.15} className="h-full">
+            <div className="h-full glass-panel p-7 rounded-3xl border border-white/[0.08] hover:border-white/20 transition-all">
+              <h4 className="text-white font-medium text-lg mb-2">Modern Production Stack</h4>
+              <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed font-normal">
+                Next.js 14/15, TypeScript, Python LLM frameworks, Tailwind CSS, PostgreSQL, and cloud-native serverless architecture.
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
 
         {/* Open Job Listings */}
         <div id="roles" className="space-y-4">
-          {CAREERS_DATA.map((job) => {
+          {CAREERS_DATA.map((job, idx) => {
             return (
-              <div
-                key={job.id}
-                className="glass-panel rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 border border-white/[0.08] hover:border-white/25 transition-all duration-300 group bg-[#09090d]"
-              >
-                <div className="max-w-3xl">
-                  <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <span className="px-3 py-0.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-neutral-300">
-                      {job.department}
-                    </span>
-                    <span className="px-3 py-0.5 rounded-full bg-neutral-900 border border-white/5 text-xs font-medium text-neutral-400">
-                      {job.type}
-                    </span>
+              <ScrollReveal key={job.id} delay={idx * 0.08} yOffset={20}>
+                <div
+                  className="glass-panel rounded-3xl p-6 sm:p-8 flex flex-col md:flex-row md:items-center justify-between gap-6 border border-white/[0.08] hover:border-white/25 transition-all duration-300 group bg-[#09090d]"
+                >
+                  <div className="max-w-3xl">
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
+                      <span className="px-3 py-0.5 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-neutral-300">
+                        {job.department}
+                      </span>
+                      <span className="px-3 py-0.5 rounded-full bg-neutral-900 border border-white/5 text-xs font-medium text-neutral-400">
+                        {job.type}
+                      </span>
+                    </div>
+
+                    <h3 className="text-2xl font-normal text-white mb-2.5 group-hover:text-neutral-200 transition-colors">
+                      {job.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mb-4 font-normal">
+                      {job.description}
+                    </p>
+
+                    <div className="flex flex-wrap items-center gap-5 text-xs text-neutral-400">
+                      <span className="flex items-center gap-1.5">
+                        <MapPin className="w-3.5 h-3.5" />
+                        {job.location}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <Clock className="w-3.5 h-3.5" />
+                        {job.experience}
+                      </span>
+                    </div>
                   </div>
 
-                  <h3 className="text-2xl font-normal text-white mb-2.5 group-hover:text-neutral-200 transition-colors">
-                    {job.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed mb-4 font-normal">
-                    {job.description}
-                  </p>
-
-                  <div className="flex flex-wrap items-center gap-5 text-xs text-neutral-400">
-                    <span className="flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5" />
-                      {job.location}
-                    </span>
-                    <span className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5" />
-                      {job.experience}
-                    </span>
+                  <div className="shrink-0 flex items-center">
+                    <button
+                      onClick={() => setSelectedJob(job)}
+                      className="btn-pill px-7 py-3.5 text-xs uppercase tracking-wider font-semibold w-full sm:w-auto text-center cursor-pointer shadow-lg"
+                    >
+                      Apply for Role
+                    </button>
                   </div>
                 </div>
-
-                <div className="shrink-0 flex items-center">
-                  <button
-                    onClick={() => setSelectedJob(job)}
-                    className="btn-pill px-7 py-3.5 text-xs uppercase tracking-wider font-semibold w-full sm:w-auto text-center cursor-pointer shadow-lg"
-                  >
-                    Apply for Role
-                  </button>
-                </div>
-              </div>
+              </ScrollReveal>
             );
           })}
         </div>
 
         {/* Internships Banner */}
-        <div id="internships" className="mt-16 glass-panel rounded-3xl p-8 sm:p-12 border border-white/[0.12] flex flex-col md:flex-row items-start md:items-center justify-between gap-8 bg-gradient-to-r from-white/[0.04] to-[#0d0d12]">
-          <div className="max-w-2xl">
-            <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs uppercase tracking-widest font-medium">
-              6-Month Software Track
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-normal text-white mt-3 mb-2">
-              Looking for our Intensive Software & AI Internship?
-            </h3>
-            <p className="text-sm text-neutral-400 leading-relaxed font-normal">
-              We offer structured, stipend-supported engineering internships at our Jind and Chandigarh hubs with direct conversion to full-time engineering and marketing associate roles upon completion.
-            </p>
+        <ScrollReveal delay={0.2} yOffset={24}>
+          <div id="internships" className="mt-16 glass-panel rounded-3xl p-8 sm:p-12 border border-white/[0.12] flex flex-col md:flex-row items-start md:items-center justify-between gap-8 bg-gradient-to-r from-white/[0.04] to-[#0d0d12]">
+            <div className="max-w-2xl">
+              <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs uppercase tracking-widest font-medium">
+                6-Month Software Track
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-normal text-white mt-3 mb-2">
+                Looking for our Intensive Software & AI Internship?
+              </h3>
+              <p className="text-sm text-neutral-400 leading-relaxed font-normal">
+                We offer structured, stipend-supported engineering internships at our Jind and Chandigarh hubs with direct conversion to full-time engineering and marketing associate roles upon completion.
+              </p>
+            </div>
+            <button
+              onClick={() => {
+                const internJob = CAREERS_DATA.find((j) => j.id === "ai-intern");
+                if (internJob) setSelectedJob(internJob);
+              }}
+              className="btn-pill px-8 py-3.5 text-xs uppercase tracking-wider font-semibold whitespace-nowrap cursor-pointer shrink-0 shadow-lg"
+            >
+              Apply for Internship
+            </button>
           </div>
-          <button
-            onClick={() => {
-              const internJob = CAREERS_DATA.find((j) => j.id === "ai-intern");
-              if (internJob) setSelectedJob(internJob);
-            }}
-            className="btn-pill px-8 py-3.5 text-xs uppercase tracking-wider font-semibold whitespace-nowrap cursor-pointer shrink-0 shadow-lg"
-          >
-            Apply for Internship
-          </button>
-        </div>
+        </ScrollReveal>
       </div>
 
       {/* APPLICATION MODAL */}

@@ -1,19 +1,32 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export function HeroSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollY } = useScroll();
+
+  const yContent = useTransform(scrollY, [0, 500], [0, 100]);
+  const opacityContent = useTransform(scrollY, [0, 400], [1, 0.1]);
+  const scaleVideo = useTransform(scrollY, [0, 700], [1.02, 1.12]);
+  const yVideo = useTransform(scrollY, [0, 700], [0, 60]);
+
   return (
     <section
+      ref={containerRef}
       id="home"
       className="relative w-full h-[100dvh] min-h-[640px] overflow-hidden bg-[#050507] flex flex-col justify-end"
     >
-      {/* BACKGROUND VIDEO & MULTI-LAYERED MEASURED GRADIENTS */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      {/* BACKGROUND VIDEO & MULTI-LAYERED MEASURED GRADIENTS WITH SCROLL PARALLAX */}
+      <motion.div
+        style={{ scale: scaleVideo, y: yVideo }}
+        className="absolute inset-0 overflow-hidden pointer-events-none z-0 origin-center will-change-transform"
+      >
         <video
-          className="w-full h-full object-cover object-center scale-[1.02] filter brightness-[0.92] contrast-[1.05]"
+          className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.05]"
           autoPlay
           muted
           loop
@@ -51,10 +64,13 @@ export function HeroSection() {
 
         {/* Ambient Top Glow */}
         <div className="absolute -top-40 left-1/3 w-[600px] h-[350px] bg-white/[0.03] rounded-full blur-[120px]" />
-      </div>
+      </motion.div>
 
-      {/* HERO TYPOGRAPHY & ACTIONS (ANCHORED BOTTOM LEFT) */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 pb-16 sm:pb-20 md:pb-24">
+      {/* HERO TYPOGRAPHY & ACTIONS WITH SCROLL PARALLAX */}
+      <motion.div
+        style={{ y: yContent, opacity: opacityContent }}
+        className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 pb-16 sm:pb-20 md:pb-24 will-change-transform"
+      >
         <div className="max-w-3xl flex flex-col items-start animate-rise">
 
           {/* Master Headline */}
@@ -90,7 +106,7 @@ export function HeroSection() {
             </Link>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

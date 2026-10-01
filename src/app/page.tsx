@@ -1,3 +1,4 @@
+import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { MetricsSection } from "@/components/MetricsSection";
@@ -11,36 +12,38 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#050505] text-[#fafafa] selection:bg-white/20 selection:text-white">
-      {/* Top Header Navigation */}
-      <Navbar />
+    <SmoothScrollProvider>
+      <main className="min-h-screen bg-[#050505] text-[#fafafa] selection:bg-white/20 selection:text-white">
+        {/* Top Header Navigation */}
+        <Navbar />
 
-      {/* Dark Cinematic Hero with looping video & bottom-left typography */}
-      <HeroSection />
+        {/* Dark Cinematic Hero with looping video & bottom-left typography */}
+        <HeroSection />
 
-      {/* Metrics & Milestones */}
-      <MetricsSection />
+        {/* Metrics & Milestones */}
+        <MetricsSection />
 
-      {/* 16 Services Grid with full architectural details */}
-      <WhatWeDoSection />
+        {/* 16 Services Grid with full architectural details */}
+        <WhatWeDoSection />
 
-      {/* Who We Are: Mission, Leadership, Dual Offices */}
-      <WhoWeAreSection />
+        {/* Who We Are: Mission, Leadership, Dual Offices */}
+        <WhoWeAreSection />
 
-      {/* Careers & Internship Program */}
-      <CareersSection />
+        {/* Careers & Internship Program */}
+        <CareersSection />
 
-      {/* 6 Curated Field Notes & Blog Posts */}
-      <BlogSection />
+        {/* 6 Curated Field Notes & Blog Posts */}
+        <BlogSection />
 
-      {/* Frequently Asked Questions */}
-      <FAQSection />
+        {/* Frequently Asked Questions */}
+        <FAQSection />
 
-      {/* Let's Talk - Interactive Contact & Discovery Form */}
-      <ContactSection />
+        {/* Let's Talk - Interactive Contact & Discovery Form */}
+        <ContactSection />
 
-      {/* Global Footer */}
-      <Footer />
-    </main>
+        {/* Global Footer */}
+        <Footer />
+      </main>
+    </SmoothScrollProvider>
   );
 }

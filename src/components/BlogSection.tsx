@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { BLOG_POSTS_DATA, BlogPostItem } from "@/data/companyData";
 import { BookOpen, Calendar, Clock, ArrowRight, X } from "lucide-react";
+import { ScrollReveal } from "./ScrollReveal";
 
 export function BlogSection() {
   const [activeArticle, setActiveArticle] = useState<BlogPostItem | null>(null);
@@ -11,31 +12,33 @@ export function BlogSection() {
   return (
     <section id="blog" className="py-28 sm:py-36 relative bg-[#07070a] border-t border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 pb-8 border-b border-white/[0.08]">
-          <div>
-            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-400 mb-3 font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
-              <span>FIELD NOTES & RESEARCH</span>
+        {/* Section Header with Scroll Reveal */}
+        <ScrollReveal yOffset={32}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 pb-8 border-b border-white/[0.08]">
+            <div>
+              <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-400 mb-3 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
+                <span>FIELD NOTES & RESEARCH</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white">
+                LATEST ARTICLES
+              </h2>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white">
-              LATEST ARTICLES
-            </h2>
+            <p className="text-sm sm:text-base text-neutral-400 max-w-lg font-normal leading-relaxed">
+              Practical strategies, technical retrospectives, and enterprise architecture insights from our engineering and marketing leads.
+            </p>
           </div>
-          <p className="text-sm sm:text-base text-neutral-400 max-w-lg font-normal leading-relaxed">
-            Practical strategies, technical retrospectives, and enterprise architecture insights from our engineering and marketing leads.
-          </p>
-        </div>
+        </ScrollReveal>
 
         {/* Editorial Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {BLOG_POSTS_DATA.map((post) => {
+          {BLOG_POSTS_DATA.map((post, idx) => {
             return (
-              <article
-                key={post.id}
-                className="glass-panel rounded-3xl overflow-hidden flex flex-col justify-between border border-white/[0.08] hover:border-white/30 transition-all duration-500 group cursor-pointer bg-[#09090d]"
-                onClick={() => setActiveArticle(post)}
-              >
+              <ScrollReveal key={post.id} delay={(idx % 3) * 0.08} className="h-full">
+                <article
+                  className="h-full glass-panel rounded-3xl overflow-hidden flex flex-col justify-between border border-white/[0.08] hover:border-white/30 transition-all duration-500 group cursor-pointer bg-[#09090d]"
+                  onClick={() => setActiveArticle(post)}
+                >
                 <div>
                   {/* Cover Photo */}
                   <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-neutral-950">
@@ -83,6 +86,7 @@ export function BlogSection() {
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </div>
               </article>
+            </ScrollReveal>
             );
           })}
         </div>

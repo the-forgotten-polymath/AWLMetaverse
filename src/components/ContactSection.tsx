@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { COMPANY_INFO, SERVICES_DATA } from "@/data/companyData";
 import { Mail, Phone, MapPin, Send, CheckCircle2, MessageSquare, Sparkles, ShieldCheck } from "lucide-react";
+import { ScrollReveal } from "./ScrollReveal";
 
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
@@ -47,12 +48,14 @@ export function ContactSection() {
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
           {/* Left Column: Context & Information */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-400 mb-3 font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
-                <span>INITIATE COLLABORATION</span>
-              </div>
+          <div className="lg:col-span-5">
+            <ScrollReveal yOffset={32}>
+              <div className="flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-400 mb-3 font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
+                    <span>INITIATE COLLABORATION</span>
+                  </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white mb-6">
                 LET&apos;S TALK
               </h2>
@@ -96,10 +99,13 @@ export function ContactSection() {
               <span>Strict NDA Guaranteed · Data Privacy by Design</span>
             </div>
           </div>
+        </ScrollReveal>
+      </div>
 
-          {/* Right Column: Interactive Studio Terminal Form */}
-          <div className="lg:col-span-7">
-            <div className="glass-panel rounded-3xl p-7 sm:p-10 border border-white/[0.12] shadow-[0_25px_60px_rgba(0,0,0,0.95)] relative overflow-hidden bg-[#09090d]">
+      {/* Right Column: Interactive Studio Terminal Form */}
+      <div className="lg:col-span-7">
+        <ScrollReveal delay={0.1} yOffset={32}>
+          <div className="glass-panel rounded-3xl p-7 sm:p-10 border border-white/[0.12] shadow-[0_25px_60px_rgba(0,0,0,0.95)] relative overflow-hidden bg-[#09090d]">
               {submitted ? (
                 <div className="py-20 flex flex-col items-center justify-center text-center animate-fade">
                   <div className="w-20 h-20 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6 shadow-2xl">
@@ -224,7 +230,8 @@ export function ContactSection() {
                 </form>
               )}
             </div>
-          </div>
+          </ScrollReveal>
+        </div>
         </div>
       </div>
     </section>

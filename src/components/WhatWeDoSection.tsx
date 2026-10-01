@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { SERVICES_DATA, ServiceItem } from "@/data/companyData";
 import { CheckCircle2, ArrowUpRight, X, Sparkles, Layers, Cpu, Code2, LineChart, Palette } from "lucide-react";
+import { ScrollReveal } from "./ScrollReveal";
 
 export function WhatWeDoSection() {
   const [activeCategory, setActiveCategory] = useState<string>("All");
@@ -37,50 +38,52 @@ export function WhatWeDoSection() {
       <div className="absolute top-1/3 right-10 w-[600px] h-[400px] bg-white/[0.015] rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8 pb-8 border-b border-white/[0.08]">
-          <div>
-            <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-400 mb-3 font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
-              <span>SERVICES & SOLUTIONS</span>
+        {/* Section Header with Scroll Reveal */}
+        <ScrollReveal yOffset={32}>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8 pb-8 border-b border-white/[0.08]">
+            <div>
+              <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-neutral-400 mb-3 font-medium">
+                <span className="w-1.5 h-1.5 rounded-full bg-white/60" />
+                <span>SERVICES & SOLUTIONS</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white">
+                WHAT WE DO
+              </h2>
+              <p className="mt-4 text-sm sm:text-base text-neutral-400 max-w-2xl font-normal leading-relaxed">
+                We design and ship high-precision software engines, automated AI pipelines, scalable business platforms, and revenue-focused acquisition funnels.
+              </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white">
-              WHAT WE DO
-            </h2>
-            <p className="mt-4 text-sm sm:text-base text-neutral-400 max-w-2xl font-normal leading-relaxed">
-              We design and ship high-precision software engines, automated AI pipelines, scalable business platforms, and revenue-focused acquisition funnels.
-            </p>
-          </div>
 
-          {/* Luxury Filter Pills */}
-          <div className="flex flex-wrap items-center gap-1.5 bg-[#0a0a0e] p-1.5 rounded-full border border-white/[0.1] shadow-2xl">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-2 cursor-pointer ${
-                  activeCategory === cat
-                    ? "bg-white text-black font-semibold shadow-[0_2px_12px_rgba(255,255,255,0.25)]"
-                    : "text-neutral-400 hover:text-white hover:bg-white/[0.06]"
-                }`}
-              >
-                {cat !== "All" && getCategoryIcon(cat)}
-                <span>{cat}</span>
-              </button>
-            ))}
+            {/* Luxury Filter Pills */}
+            <div className="flex flex-wrap items-center gap-1.5 bg-[#0a0a0e] p-1.5 rounded-full border border-white/[0.1] shadow-2xl">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 flex items-center gap-2 cursor-pointer ${
+                    activeCategory === cat
+                      ? "bg-white text-black font-semibold shadow-[0_2px_12px_rgba(255,255,255,0.25)]"
+                      : "text-neutral-400 hover:text-white hover:bg-white/[0.06]"
+                  }`}
+                >
+                  {cat !== "All" && getCategoryIcon(cat)}
+                  <span>{cat}</span>
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
-          {filteredServices.map((service) => {
+          {filteredServices.map((service, idx) => {
             return (
-              <div
-                key={service.id}
-                className="glass-panel rounded-3xl overflow-hidden flex flex-col justify-between border border-white/[0.08] hover:border-white/30 transition-all duration-500 group relative bg-[#09090d]"
-              >
-                {/* Top Glowing Shimmer Line on Hover */}
-                <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+              <ScrollReveal key={service.id} delay={(idx % 3) * 0.08} className="h-full">
+                <div
+                  className="h-full glass-panel rounded-3xl overflow-hidden flex flex-col justify-between border border-white/[0.08] hover:border-white/30 transition-all duration-500 group relative bg-[#09090d]"
+                >
+                  {/* Top Glowing Shimmer Line on Hover */}
+                  <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
 
                 <div>
                   {/* Photo Header */}
@@ -144,6 +147,7 @@ export function WhatWeDoSection() {
                   </button>
                 </div>
               </div>
+            </ScrollReveal>
             );
           })}
         </div>
